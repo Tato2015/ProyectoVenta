@@ -1,0 +1,150 @@
+/** CREACION DE TABLAS Y PRIMARY KEY DE CADA UNA DE ELLAS**/
+CREATE TABLE TBL_SUPPLIERS
+(
+supplierId       NUMBER(10)   NOT NULL,
+companyName      VARCHAR2(50) NOT NULL,
+contactTitle     VARCHAR2(50) NOT NULL,
+address          VARCHAR2(70) NOT NULL,
+region           VARCHAR2(50) NOT NULL,
+city             VARCHAR2(50) NOT NULL,
+postalCode       VARCHAR2(50) NOT NULL,
+country          VARCHAR2(50) NOT NULL,
+phone            VARCHAR2(50) NOT NULL,
+fax              VARCHAR2(50),
+homePage         VARCHAR2(50)
+);
+
+ALTER TABLE TBL_SUPPLIERS
+ADD CONSTRAINT PK_TBL_SUPPLIERS
+PRIMARY KEY (supplierId) ;
+
+
+CREATE TABLE TBL_CATEGORIES
+(
+categoryId        NUMBER(10)   NOT NULL,
+categoryName      VARCHAR(50)  NOT NULL,
+description       VARCHAR(50)  NOT NULL,
+picture           VARCHAR(50) 
+);
+
+ALTER TABLE TBL_CATEGORIES
+ADD CONSTRAINT PK_TBL_CATEGORIES
+PRIMARY KEY (categoryId) ;
+
+
+CREATE TABLE TBL_PRODUCTS
+(
+productId        NUMBER(10)   NOT NULL,
+productName      VARCHAR(100) NOT NULL,
+supplierId       NUMBER(10)   NOT NULL,
+categoryId       NUMBER(10)   NOT NULL,
+quantityPerUnit  NUMBER(10)   NOT NULL,
+unitPrice        NUMBER(10,2) NOT NULL,
+unitInStock      NUMBER(10)   NOT NULL,
+unitsOnOrder     NUMBER(10)   NOT NULL,
+reorderLevel     NUMBER(10),
+discontinued     VARCHAR2(10)
+);
+
+ALTER TABLE TBL_PRODUCTS
+ADD CONSTRAINT PK_TBL_PRODUCTS
+PRIMARY KEY (productId);
+
+
+CREATE TABLE TBL_EMPLOYEES
+(
+employeeId       NUMBER(10)   NOT NULL,
+lastName         VARCHAR(50)  NOT NULL,
+firstName        VARCHAR(50)  NOT NULL,
+title            VARCHAR(50)  NOT NULL,
+titleOfCourtesy  VARCHAR(50)  NOT NULL,
+birthDate        VARCHAR(10)  NOT NULL,
+hireDate         VARCHAR(10)  NOT NULL,
+address          VARCHAR(100) NOT NULL,
+city             VARCHAR2(50) NOT NULL,
+region           VARCHAR2(50) NOT NULL,
+postalCode       VARCHAR2(50) NOT NULL,
+country          VARCHAR2(50) NOT NULL,
+homePhone        VARCHAR2(10),
+extension        VARCHAR2(10),
+photo            VARCHAR2(10),
+notes            VARCHAR2(10),
+reportsTo        VARCHAR2(10)
+);
+
+ALTER TABLE TBL_EMPLOYEES
+ADD CONSTRAINT PK_TBL_EMPLOYEES
+PRIMARY KEY (employeeId);
+
+
+CREATE TABLE TBL_SHIPPERS
+(
+shipperId        NUMBER(10)   NOT NULL,
+companyName      VARCHAR(50)  NOT NULL,
+phone            VARCHAR2(10),
+shipName         VARCHAR2(50) ,
+shipAddress      VARCHAR2(50) ,
+shipCity         VARCHAR2(50) ,
+shipRegion       VARCHAR2(50) ,
+shipPostalCode   VARCHAR2(50) ,
+shipCountry      VARCHAR2(50) 
+);
+
+
+ALTER TABLE TBL_SHIPPERS
+ADD CONSTRAINT PK_TBL_SHIPPERS
+PRIMARY KEY (shipperId);
+
+
+CREATE TABLE TBL_CUSTOMERS
+(
+customerId       NUMBER(10)   NOT NULL,
+companyName      VARCHAR(50)  NOT NULL,
+contactName      VARCHAR(50)  NOT NULL,
+contactTitle     VARCHAR(50)  NOT NULL,
+address          VARCHAR(50)  NOT NULL,
+city             VARCHAR2(50) NOT NULL,
+region           VARCHAR2(50) NOT NULL,
+postalCode       VARCHAR2(50) NOT NULL,
+country          VARCHAR2(50) NOT NULL,
+phone            VARCHAR2(50) NOT NULL,
+fax              VARCHAR2(50)
+);
+
+ALTER TABLE TBL_CUSTOMERS
+ADD CONSTRAINT PK_TBL_CUSTOMERS
+PRIMARY KEY (customerId);
+
+
+CREATE TABLE TBL_ORDERS
+(
+orderId          NUMBER(10)   NOT NULL,
+customerId      NUMBER(10)   NOT NULL,
+employeeId       NUMBER(10)   NOT NULL,
+shipperId        NUMBER(10)   NOT NULL,
+orderDate        VARCHAR2(50) NOT NULL,
+requiredDate     VARCHAR2(50) NOT NULL,
+shippedDate      VARCHAR2(50) NOT NULL,
+shipVida         VARCHAR2(50) NOT NULL,
+freight          VARCHAR2(50) NOT NULL
+);
+
+
+ALTER TABLE TBL_ORDERS
+ADD CONSTRAINT PK_TBL_ORDERS
+PRIMARY KEY (orderId);
+
+
+
+CREATE TABLE TBL_ORDER_DETAILS
+(
+orderId          NUMBER(10)   NOT NULL,
+productId        NUMBER(10)   NOT NULL,
+unitPrice        NUMBER(10,2) NOT NULL,
+discount         NUMBER(10,2) NOT NULL
+);
+
+ALTER TABLE TBL_ORDER_DETAILS
+ADD CONSTRAINT PK_TBL_ORDER_DETAILS
+PRIMARY KEY (orderId,productId);
+

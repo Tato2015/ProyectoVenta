@@ -1,0 +1,8 @@
+// Abrimos Run SQL Command Line y escribimos lo siguiente:
+connect
+
+// Luego tipeamos el usuario : 
+SYSTEM 
+
+//y el pass 
+admin
