@@ -1,0 +1,5 @@
+commit 25842919da736f5e759f84e56266c58cca19cab9
+Author: Geraldo Achuy <geraldo62012@gmail.com>
+Date:   Sun May 21 20:26:32 2017 -0500
+
+    Inicio,lista de scripts para crear y borrar : BD,TABLAS,CONSTRAINTS
